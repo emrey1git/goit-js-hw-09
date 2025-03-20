@@ -1,7 +1,6 @@
-// SimpleLightbox modülünü doğru şekilde import et
-import * as SimpleLightbox from 'https://cdn.jsdelivr.net/npm/simplelightbox@2.0.0/dist/simple-lightbox.min.js';
 
-// 1. Görüntü Dizisi (URL'lerde < ve > olmadan)
+
+// 1. Galeri İçeriği
 const images = [
   {
     preview: 'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
@@ -50,33 +49,25 @@ const images = [
   },
 ];
 
-// 2. Galeri Öğelerini İşaretleme
+// 2. Galeri Elemanlarını Seç ve HTML'e Ekle
 const galleryEl = document.querySelector('.gallery');
 
 const galleryItemsMarkup = images
   .map(({ preview, original, description }) => {
     return `
     <li class="gallery-item">
-      <!-- onclick ile tıklama olayını engelle -->
-      <a class="gallery-link" href="${original}" onclick="event.preventDefault();">
-        <img
-          class="gallery-image"
-          src="${preview}"
-          alt="${description}"
-        />
+      <a class="gallery-link" href="${original}">
+        <img class="gallery-image" src="${preview}" alt="${description}" />
       </a>
     </li>
   `;
   })
   .join('');
 
-
-// Galeri elemanlarını HTML'e ekle
 galleryEl.innerHTML = galleryItemsMarkup;
 
-// Lightbox'ı başlat
-const lightbox = new SimpleLightbox.default('.gallery a', {
-    captionsData: 'alt', // Açıklamalar için <img> etiketinin "alt" özelliğini kullan
-    captionDelay: 250, // Açıklama 250ms gecikmeli gözüksün
-    download: false,
+// 3. SimpleLightbox Başlat
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
 });
