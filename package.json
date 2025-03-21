@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://emrey1git.github.io/goit-js-hw-10",
+  "homepage": "https://emrey1git.github.io/goit-js-hw-09",
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/goit-js-hw-09/",
